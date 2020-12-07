@@ -17,6 +17,7 @@ public class PalindromNumber
             rev = rev * 10 + reminder;
             temp = temp / 10;
         }
+        System.out.println("Test");
         System.out.println(number);
         System.out.println(rev);
 
