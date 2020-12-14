@@ -7,19 +7,24 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "FT_T_ISPC")
-public class IssuePrice implements Serializable
+@Table(name = "FT_T_MTDP")
+public class MatrixDefinitionInstancePriceStatus implements Serializable
 {
 
     private static final long serialVersionUID = 1L;
 
     @Id
-    @Column(name = "ISS_PRC_ID")
-    String id;
+    @Column(name = "MTDP_OID")
+    private String id;
+
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "GPCS_OID")
+    private GoldenPriceConsolidatedStatus goldenPrice;
 
     public String getId()
     {
@@ -31,15 +36,12 @@ public class IssuePrice implements Serializable
         this.id = id;
     }
 
-    @OneToOne(mappedBy = "issuePrice", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    GoldenPrice goldenPrice;
-
-    public GoldenPrice getGoldenPrice()
+    public GoldenPriceConsolidatedStatus getGoldenPrice()
     {
         return goldenPrice;
     }
 
-    public void setGoldenPrice(GoldenPrice goldenPrice)
+    public void setGoldenPrice(GoldenPriceConsolidatedStatus goldenPrice)
     {
         this.goldenPrice = goldenPrice;
     }

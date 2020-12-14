@@ -2,7 +2,6 @@ package com.jpahibernate.spring.orm.model;
 
 import java.io.Serializable;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -12,18 +11,19 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "FT_T_MTDP")
-public class GoldenPriceCurveParticipent implements Serializable
+@Table(name = "FT_T_MTGD")
+public class MatrixGridDetails implements Serializable
 {
 
-    /**
-     * 
-     */
     private static final long serialVersionUID = 1L;
 
     @Id
-    @Column(name = "MTDP_OID")
-    String id;
+    @Column(name = "MTGD_OID")
+    private String id;
+
+    @ManyToOne
+    @JoinColumn(name = "MTDI_OID")
+    private MatrixDefinitionInstance matrixDefinitionInstance;
 
     public String getId()
     {
@@ -35,18 +35,14 @@ public class GoldenPriceCurveParticipent implements Serializable
         this.id = id;
     }
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "GPCS_OID")
-    GoldenPrice goldenPrice;
-
-    public GoldenPrice getGoldenPrice()
+    public MatrixDefinitionInstance getMatrixDefinitionInstance()
     {
-        return goldenPrice;
+        return matrixDefinitionInstance;
     }
 
-    public void setGoldenPrice(GoldenPrice goldenPrice)
+    public void setMatrixDefinitionInstance(MatrixDefinitionInstance matrixDefinitionInstance)
     {
-        this.goldenPrice = goldenPrice;
+        this.matrixDefinitionInstance = matrixDefinitionInstance;
     }
 
 }

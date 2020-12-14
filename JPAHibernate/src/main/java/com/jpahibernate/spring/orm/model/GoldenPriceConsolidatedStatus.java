@@ -16,7 +16,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "FT_t_GPCS")
-public class GoldenPrice implements Serializable
+public class GoldenPriceConsolidatedStatus implements Serializable
 {
     private static final long serialVersionUID = 1L;
     @Id
@@ -25,24 +25,10 @@ public class GoldenPrice implements Serializable
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "INSTR_ID")
-    Issue issue;
-
-    @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "ISS_PRC_ID")
-    IssuePrice issuePrice;
+    private Issue issue;
 
     @OneToMany(mappedBy = "goldenPrice", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    Set<GoldenPriceCurveParticipent> goldenPriceCurveParticipents;
-
-    public IssuePrice getIssuePrice()
-    {
-        return issuePrice;
-    }
-
-    public void setIssuePrice(IssuePrice issuePrice)
-    {
-        this.issuePrice = issuePrice;
-    }
+    private Set<MatrixDefinitionInstancePriceStatus> goldenPriceCurveParticipents;
 
     public String getId()
     {
@@ -64,12 +50,12 @@ public class GoldenPrice implements Serializable
         this.issue = issue;
     }
 
-    public Set<GoldenPriceCurveParticipent> getGoldenPriceCurveParticipents()
+    public Set<MatrixDefinitionInstancePriceStatus> getGoldenPriceCurveParticipents()
     {
         return goldenPriceCurveParticipents;
     }
 
-    public void setGoldenPriceCurveParticipents(Set<GoldenPriceCurveParticipent> goldenPriceCurveParticipents)
+    public void setGoldenPriceCurveParticipents(Set<MatrixDefinitionInstancePriceStatus> goldenPriceCurveParticipents)
     {
         this.goldenPriceCurveParticipents = goldenPriceCurveParticipents;
     }

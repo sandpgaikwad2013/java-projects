@@ -1,32 +1,42 @@
 package com.jpahibernate.spring.orm.model;
 
+import java.io.Serializable;
 import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "FT_T_ISSU")
-public class Issue
+public class Issue implements Serializable
 {
+    private static final long serialVersionUID = 1L;
+
     @Id
     @Column(name = "INSTR_ID")
-    String id;
+    private String id;
 
     @OneToMany(mappedBy = "issue", fetch = FetchType.EAGER)
-    Set<GoldenPrice> goldenPrices;
+    private Set<GoldenPriceConsolidatedStatus> goldenPriceConsolidatedStatus;
 
-    public Set<GoldenPrice> getGoldenPrices()
+    @ManyToOne
+    @JoinColumn(name = "ISS_TYP")
+    IssueType issueType;
+
+    public Set<GoldenPriceConsolidatedStatus> getGoldenPriceConsolidatedStatus()
     {
-        return goldenPrices;
+        return goldenPriceConsolidatedStatus;
     }
 
-    public void setGoldenPrices(Set<GoldenPrice> goldenPrices)
+    public void setGoldenPriceConsolidatedStatus(Set<GoldenPriceConsolidatedStatus> goldenPriceConsolidatedStatus)
     {
-        this.goldenPrices = goldenPrices;
+        this.goldenPriceConsolidatedStatus = goldenPriceConsolidatedStatus;
     }
+
 }
