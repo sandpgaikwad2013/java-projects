@@ -41,6 +41,7 @@ public class DerivationService
         return derivationDao.getMatrixDefinition();
     }
 
+    @Transactional
     public List<MatrixDefinitionInstance> getMatrixDefinitionInstance()
     {
         return derivationDao.getMatrixDefinitionInstance();
@@ -59,6 +60,12 @@ public class DerivationService
     public List<GoldenPriceConsolidatedStatus> GoldenPriceConsolidatedStatus()
     {
         return derivationDao.GoldenPriceConsolidatedStatus();
+    }
+
+    @Transactional(readOnly = true)
+    public List<Issue> getIssue()
+    {
+        return derivationDao.getIssue();
     }
 
 }
