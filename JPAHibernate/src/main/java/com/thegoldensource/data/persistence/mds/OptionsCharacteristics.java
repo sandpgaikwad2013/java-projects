@@ -1,4 +1,4 @@
-package com.jpahibernate.spring.orm.model;
+package com.thegoldensource.data.persistence.mds;
 
 import java.io.Serializable;
 
@@ -11,23 +11,23 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "FT_T_MSCH")
-public class MiscellaneousCharacteristics implements Serializable
+@Table(name = "FT_T_OPCH")
+public class OptionsCharacteristics implements Serializable
 {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @Column(name = "MSCH_OID")
+    @Column(name = "OPCH_OID")
     private String id;
-
-    @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "INSTR_ID")
-    private Issue issue;
 
     public String getId()
     {
         return id;
     }
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "INSTR_ID")
+    private Issue issue;
 
     public void setId(String id)
     {

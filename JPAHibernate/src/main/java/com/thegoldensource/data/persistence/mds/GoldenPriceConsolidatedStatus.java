@@ -1,4 +1,4 @@
-package com.jpahibernate.spring.orm.model;
+package com.thegoldensource.data.persistence.mds;
 
 import java.io.Serializable;
 import java.util.Set;
@@ -23,14 +23,14 @@ public class GoldenPriceConsolidatedStatus implements Serializable
     @Column(name = "GPCS_OID")
     private String id;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "INSTR_ID")
     private Issue issue;
 
-    @OneToMany(mappedBy = "goldenPrice", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "goldenPrice", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<MatrixDefinitionInstancePriceStatus> goldenPriceCurveParticipents;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ISS_PRC_ID")
     private IssuePrice issuePrice;
 

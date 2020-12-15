@@ -1,4 +1,4 @@
-package com.jpahibernate.spring.orm.model;
+package com.thegoldensource.data.persistence.mds;
 
 import java.io.Serializable;
 
@@ -8,12 +8,12 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "FT_T_MTFC")
-public class MatrixFieldDomainValue implements Serializable
+@Table(name = "FT_T_TNLE")
+public class TenorLength implements Serializable
 {
     private static final long serialVersionUID = 1L;
     @Id
-    @Column(name = "MTFC_OID")
+    @Column(name = "TNLE_OID")
     private String id;
 
     public String getId()

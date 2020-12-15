@@ -1,4 +1,4 @@
-package com.jpahibernate.spring.orm.model;
+package com.thegoldensource.data.persistence.mds;
 
 import java.io.Serializable;
 
@@ -8,12 +8,12 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "FT_T_TNCD")
-public class TenorCalculationDetails implements Serializable
+@Table(name = "FT_T_PRTR")
+public class PriceToleranceRange implements Serializable
 {
     private static final long serialVersionUID = 1L;
     @Id
-    @Column(name = "TNCD_OID")
+    @Column(name = "PRTR_OID")
     private String id;
 
     public String getId()

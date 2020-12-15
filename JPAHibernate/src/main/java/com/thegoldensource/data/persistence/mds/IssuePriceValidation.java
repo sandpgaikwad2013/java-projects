@@ -1,7 +1,4 @@
-/**
- * 
- */
-package com.jpahibernate.spring.orm.model;
+package com.thegoldensource.data.persistence.mds;
 
 import java.io.Serializable;
 
@@ -13,25 +10,20 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-/**
- * @author sgaikwad
- *
- */
-
 @Entity
-@Table(name = "FT_T_ISCV")
-public class IssueCalculatedValue implements Serializable
+@Table(name = "FT_T_ISPS")
+public class IssuePriceValidation implements Serializable
 {
 
-    private static final long serialVersionUID = 6561284764223789401L;
+    private static final long serialVersionUID = 1L;
 
     @Id
-    @Column(name = "ISCV_OID")
+    @Column(name = "ISPS_OID")
     String id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "INSTR_ID")
-    Issue issue;
+    @JoinColumn(name = "ISS_PRC_ID")
+    IssuePrice issuePrice;
 
     public String getId()
     {
@@ -43,14 +35,14 @@ public class IssueCalculatedValue implements Serializable
         this.id = id;
     }
 
-    public Issue getIssue()
+    public IssuePrice getIssuePrice()
     {
-        return issue;
+        return issuePrice;
     }
 
-    public void setIssue(Issue issue)
+    public void setIssuePrice(IssuePrice issuePrice)
     {
-        this.issue = issue;
+        this.issuePrice = issuePrice;
     }
 
 }

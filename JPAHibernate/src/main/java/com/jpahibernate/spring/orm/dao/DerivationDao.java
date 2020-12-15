@@ -9,16 +9,16 @@ import javax.persistence.Query;
 
 import org.springframework.stereotype.Component;
 
-import com.jpahibernate.spring.orm.model.GoldenPriceConsolidatedStatus;
-import com.jpahibernate.spring.orm.model.Issue;
-import com.jpahibernate.spring.orm.model.IssueCalculatedValue;
-import com.jpahibernate.spring.orm.model.IssueCurveSurCharacteristics;
-import com.jpahibernate.spring.orm.model.IssuePrice;
-import com.jpahibernate.spring.orm.model.IssueType;
-import com.jpahibernate.spring.orm.model.MatrixDefinition;
-import com.jpahibernate.spring.orm.model.MatrixDefinitionInstance;
-import com.jpahibernate.spring.orm.model.MatrixGridDetails;
-import com.jpahibernate.spring.orm.model.PriceValidationDerivationLog;
+import com.thegoldensource.data.persistence.mds.GoldenPriceConsolidatedStatus;
+import com.thegoldensource.data.persistence.mds.Issue;
+import com.thegoldensource.data.persistence.mds.IssueCalculatedValue;
+import com.thegoldensource.data.persistence.mds.IssueCurveSurCharacteristics;
+import com.thegoldensource.data.persistence.mds.IssuePrice;
+import com.thegoldensource.data.persistence.mds.IssueType;
+import com.thegoldensource.data.persistence.mds.MatrixDefinition;
+import com.thegoldensource.data.persistence.mds.MatrixDefinitionInstance;
+import com.thegoldensource.data.persistence.mds.MatrixGridDetails;
+import com.thegoldensource.data.persistence.mds.PriceValidationDerivationLog;
 
 @Component
 public class DerivationDao
@@ -55,13 +55,11 @@ public class DerivationDao
     {
         String hql = "SELECT p FROM MatrixDefinitionInstance p WHERE P.id=:abc ";
         Query createQuery = em.createQuery(hql);
-        createQuery.setParameter("abc", "AQ5e1AUTO1");// tenor4lS24
+        createQuery.setParameter("abc", "C&w-p<4cO1");// tenor4lS24
         List<MatrixDefinitionInstance> rs = createQuery.getResultList();
         MatrixDefinitionInstance issue = rs.get(0);
-        Set<IssueCurveSurCharacteristics> rs1 = issue.getIssueCurveSurCharacteristics();
+        Set<IssueCalculatedValue> rs1 = issue.getIssueCalculatedValues();
         System.out.println(rs1);
-        Set<MatrixGridDetails> ob1 = issue.getMatrixGridDetails();
-        System.out.println(ob1);
 
         return rs;
     }

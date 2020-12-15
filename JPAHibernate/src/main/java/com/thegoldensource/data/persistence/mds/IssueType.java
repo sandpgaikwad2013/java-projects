@@ -1,4 +1,4 @@
-package com.jpahibernate.spring.orm.model;
+package com.thegoldensource.data.persistence.mds;
 
 import java.io.Serializable;
 import java.util.Set;
@@ -20,7 +20,7 @@ public class IssueType implements Serializable
     @Column(name = "ISS_TYP")
     private String issueType;
 
-    @OneToMany(mappedBy = "issueType", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "issueType", fetch = FetchType.LAZY)
     private Set<Issue> issues;
 
     public Set<Issue> getIssues()

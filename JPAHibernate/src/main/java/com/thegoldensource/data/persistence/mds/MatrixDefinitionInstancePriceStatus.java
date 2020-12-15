@@ -1,4 +1,4 @@
-package com.jpahibernate.spring.orm.model;
+package com.thegoldensource.data.persistence.mds;
 
 import java.io.Serializable;
 
@@ -22,7 +22,7 @@ public class MatrixDefinitionInstancePriceStatus implements Serializable
     @Column(name = "MTDP_OID")
     private String id;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "GPCS_OID")
     private GoldenPriceConsolidatedStatus goldenPrice;
 

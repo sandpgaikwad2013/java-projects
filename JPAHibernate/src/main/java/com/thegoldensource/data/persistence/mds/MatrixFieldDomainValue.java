@@ -1,27 +1,20 @@
-package com.jpahibernate.spring.orm.model;
+package com.thegoldensource.data.persistence.mds;
 
 import java.io.Serializable;
-import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "FT_T_MTRX")
-public class MatrixDefinition implements Serializable
+@Table(name = "FT_T_MTFC")
+public class MatrixFieldDomainValue implements Serializable
 {
     private static final long serialVersionUID = 1L;
-
     @Id
-    @Column(name = "MTRX_OID")
+    @Column(name = "MTFC_OID")
     private String id;
-
-    @OneToMany(mappedBy = "matrixDefinition", fetch = FetchType.EAGER)
-    private Set<MatrixDefinitionInstance> matrixDefinitionInstances;
 
     public String getId()
     {

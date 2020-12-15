@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans" 
+<beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:p="http://www.springframework.org/schema/p"
-	xmlns:context="http://www.springframework.org/schema/context" 
-	xmlns:tx="http://www.springframework.org/schema/tx" 
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="
 		http://www.springframework.org/schema/beans
@@ -12,44 +12,52 @@
 		http://www.springframework.org/schema/tx
 		http://www.springframework.org/schema/tx/spring-tx.xsd
 		">
-	
-	<!-- Scans the classpath for annotated components that will be auto-registered as Spring beans -->
-	<context:component-scan base-package="com.jpahibernate.spring" />
+
+	<!-- Scans the classpath for annotated components that will be auto-registered 
+		as Spring beans -->
+	<context:component-scan
+		base-package="com.jpahibernate.spring" />
 	<!-- Activates various annotations to be detected in bean classes e.g: @Autowired -->
 	<context:annotation-config />
 
-	<!-- <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<property name="driverClassName" value="org.hsqldb.jdbcDriver" />
-		<property name="url" value="jdbc:hsqldb:mem://productDb" />
-		<property name="username" value="sa" />
-		<property name="password" value="" />
-	</bean> -->
+	<!-- <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource"> 
+		<property name="driverClassName" value="org.hsqldb.jdbcDriver" /> <property 
+		name="url" value="jdbc:hsqldb:mem://productDb" /> <property name="username" 
+		value="sa" /> <property name="password" value="" /> </bean> -->
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
-		<property name="url" value="jdbc:oracle:thin:@//INDEV52:1521/INDEV52" />
+		<property name="driverClassName"
+			value="oracle.jdbc.driver.OracleDriver" />
+		<property name="url"
+			value="jdbc:oracle:thin:@//INDEV52:1521/INDEV52" />
 		<property name="username" value="GC_871_MDSRM" />
 		<property name="password" value="GC_871_MDSRM" />
 	</bean>
-	
-	<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
-			p:packagesToScan="com.jpahibernate.spring.orm.model"
-            p:dataSource-ref="dataSource"
-			>
+
+	<bean id="entityManagerFactory"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
+		p:packagesToScan="com.thegoldensource.data.persistence.mds"
+		p:dataSource-ref="dataSource">
 		<property name="jpaVendorAdapter">
-			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+			<bean
+				class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
 				<!-- <property name="generateDdl" value="true" /> -->
 				<property name="showSql" value="true" />
-				<property name="databasePlatform" value="org.hibernate.dialect.Oracle10gDialect" />
+				<property name="databasePlatform"
+					value="org.hibernate.dialect.Oracle10gDialect" />
 			</bean>
 		</property>
-		<property name="persistenceUnitName" value="MDSPersistenceUnit" />
+		<property name="persistenceUnitName"
+			value="MDSPersistenceUnit" />
 	</bean>
 
 	<!-- Transactions -->
-	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
-		<property name="entityManagerFactory" ref="entityManagerFactory" />
+	<bean id="transactionManager"
+		class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory"
+			ref="entityManagerFactory" />
 	</bean>
-	<tx:annotation-driven transaction-manager="transactionManager" />
+	<tx:annotation-driven
+		transaction-manager="transactionManager" />
 
 </beans>

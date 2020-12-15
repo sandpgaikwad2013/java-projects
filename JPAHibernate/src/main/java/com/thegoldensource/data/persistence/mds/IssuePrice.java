@@ -1,4 +1,4 @@
-package com.jpahibernate.spring.orm.model;
+package com.thegoldensource.data.persistence.mds;
 
 import java.io.Serializable;
 import java.util.Set;
@@ -20,7 +20,7 @@ public class IssuePrice implements Serializable
     @Column(name = "ISS_PRC_ID")
     private String id;
 
-    @OneToMany(mappedBy = "issuePrice", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "issuePrice", fetch = FetchType.LAZY)
     Set<IssuePriceValidation> issuePriceValidations;
 
     public String getId()

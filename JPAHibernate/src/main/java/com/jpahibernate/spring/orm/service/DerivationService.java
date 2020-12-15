@@ -9,12 +9,12 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.jpahibernate.spring.orm.dao.DerivationDao;
-import com.jpahibernate.spring.orm.model.GoldenPriceConsolidatedStatus;
-import com.jpahibernate.spring.orm.model.Issue;
-import com.jpahibernate.spring.orm.model.IssuePrice;
-import com.jpahibernate.spring.orm.model.IssueType;
-import com.jpahibernate.spring.orm.model.MatrixDefinition;
-import com.jpahibernate.spring.orm.model.MatrixDefinitionInstance;
+import com.thegoldensource.data.persistence.mds.GoldenPriceConsolidatedStatus;
+import com.thegoldensource.data.persistence.mds.Issue;
+import com.thegoldensource.data.persistence.mds.IssuePrice;
+import com.thegoldensource.data.persistence.mds.IssueType;
+import com.thegoldensource.data.persistence.mds.MatrixDefinition;
+import com.thegoldensource.data.persistence.mds.MatrixDefinitionInstance;
 
 @Component
 public class DerivationService

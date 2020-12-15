@@ -1,4 +1,4 @@
-package com.jpahibernate.spring.orm.model;
+package com.thegoldensource.data.persistence.mds;
 
 import java.io.Serializable;
 
@@ -21,7 +21,7 @@ public class MatrixGridDetails implements Serializable
     @Column(name = "MTGD_OID")
     private String id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "MTDI_OID")
     private MatrixDefinitionInstance matrixDefinitionInstance;
 

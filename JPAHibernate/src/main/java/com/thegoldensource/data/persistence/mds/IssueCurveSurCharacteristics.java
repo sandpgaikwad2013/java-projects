@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.jpahibernate.spring.orm.model;
+package com.thegoldensource.data.persistence.mds;
 
 import java.io.Serializable;
 
