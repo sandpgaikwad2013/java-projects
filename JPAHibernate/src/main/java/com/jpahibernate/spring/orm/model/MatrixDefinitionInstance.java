@@ -3,6 +3,7 @@ package com.jpahibernate.spring.orm.model;
 import java.io.Serializable;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -23,12 +24,15 @@ public class MatrixDefinitionInstance implements Serializable
     @Column(name = "MTDI_OID")
     private String id;
 
-    @OneToMany(mappedBy = "matrixDefinitionInstance", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "matrixDefinitionInstance", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<MatrixGridDetails> matrixGridDetails;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "MTRX_OID")
     private MatrixDefinition matrixDefinition;
+
+    @OneToMany(mappedBy = "mdsDefinitionInstance", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Set<IssueCurveSurCharacteristics> issueCurveSurCharacteristics;
 
     public String getId()
     {
@@ -48,6 +52,16 @@ public class MatrixDefinitionInstance implements Serializable
     public void setMatrixGridDetails(Set<MatrixGridDetails> matrixGridDetails)
     {
         this.matrixGridDetails = matrixGridDetails;
+    }
+
+    public Set<IssueCurveSurCharacteristics> getIssueCurveSurCharacteristics()
+    {
+        return issueCurveSurCharacteristics;
+    }
+
+    public void setIssueCurveSurCharacteristics(Set<IssueCurveSurCharacteristics> issueCurveSurCharacteristics)
+    {
+        this.issueCurveSurCharacteristics = issueCurveSurCharacteristics;
     }
 
 }
