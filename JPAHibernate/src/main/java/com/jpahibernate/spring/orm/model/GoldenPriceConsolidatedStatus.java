@@ -30,6 +30,10 @@ public class GoldenPriceConsolidatedStatus implements Serializable
     @OneToMany(mappedBy = "goldenPrice", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<MatrixDefinitionInstancePriceStatus> goldenPriceCurveParticipents;
 
+    @OneToOne
+    @JoinColumn(name = "ISS_PRC_ID")
+    private IssuePrice issuePrice;
+
     public String getId()
     {
         return id;
@@ -58,6 +62,16 @@ public class GoldenPriceConsolidatedStatus implements Serializable
     public void setGoldenPriceCurveParticipents(Set<MatrixDefinitionInstancePriceStatus> goldenPriceCurveParticipents)
     {
         this.goldenPriceCurveParticipents = goldenPriceCurveParticipents;
+    }
+
+    public IssuePrice getIssuePrice()
+    {
+        return issuePrice;
+    }
+
+    public void setIssuePrice(IssuePrice issuePrice)
+    {
+        this.issuePrice = issuePrice;
     }
 
 }

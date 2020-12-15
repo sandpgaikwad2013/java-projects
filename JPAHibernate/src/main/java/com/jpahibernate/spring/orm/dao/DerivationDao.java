@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 
 import com.jpahibernate.spring.orm.model.GoldenPriceConsolidatedStatus;
 import com.jpahibernate.spring.orm.model.Issue;
+import com.jpahibernate.spring.orm.model.IssuePrice;
 import com.jpahibernate.spring.orm.model.IssueType;
 import com.jpahibernate.spring.orm.model.MatrixDefinition;
 import com.jpahibernate.spring.orm.model.MatrixDefinitionInstance;
@@ -61,4 +62,19 @@ public class DerivationDao
         return createQuery.getResultList();
     }
 
+    public List<IssuePrice> getIssuePrice()
+    {
+        String hql = "SELECT p FROM IssuePrice p WHERE P.id=:abc ";
+        Query createQuery = em.createQuery(hql);
+        createQuery.setParameter("abc", "Py7103-OO1");
+        return createQuery.getResultList();
+    }
+
+    public List<GoldenPriceConsolidatedStatus> GoldenPriceConsolidatedStatus()
+    {
+        String hql = "SELECT p FROM GoldenPriceConsolidatedStatus p WHERE P.id=:abc ";
+        Query createQuery = em.createQuery(hql);
+        createQuery.setParameter("abc", "Vr5O05SdO1");
+        return createQuery.getResultList();
+    }
 }

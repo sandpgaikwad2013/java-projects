@@ -2,6 +2,8 @@ package com.jpahibernate.spring.orm.service;
 
 import java.util.List;
 
+import javax.persistence.Query;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -9,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.jpahibernate.spring.orm.dao.DerivationDao;
 import com.jpahibernate.spring.orm.model.GoldenPriceConsolidatedStatus;
 import com.jpahibernate.spring.orm.model.Issue;
+import com.jpahibernate.spring.orm.model.IssuePrice;
 import com.jpahibernate.spring.orm.model.IssueType;
 import com.jpahibernate.spring.orm.model.MatrixDefinition;
 import com.jpahibernate.spring.orm.model.MatrixDefinitionInstance;
@@ -46,6 +49,16 @@ public class DerivationService
     public List<IssueType> getIssueType()
     {
         return derivationDao.getIssueType();
+    }
+
+    public List<IssuePrice> getIssuePrice()
+    {
+        return derivationDao.getIssuePrice();
+    }
+
+    public List<GoldenPriceConsolidatedStatus> GoldenPriceConsolidatedStatus()
+    {
+        return derivationDao.GoldenPriceConsolidatedStatus();
     }
 
 }
