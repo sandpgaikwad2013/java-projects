@@ -13,8 +13,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Where;
+
 @Entity
 @Table(name = "FT_T_MTDI")
+@Where(clause = " END_TMS IS NULL ")
 public class MatrixDefinitionInstance implements Serializable
 {
 
@@ -29,13 +32,19 @@ public class MatrixDefinitionInstance implements Serializable
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "MTRX_OID")
+    @Where(clause = " END_TMS IS NULL ")
     private MatrixDefinition matrixDefinition;
 
     @OneToMany(mappedBy = "mdsDefinitionInstance", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @Where(clause = " END_TMS IS NULL ")
     private Set<IssueCurveSurCharacteristics> issueCurveSurCharacteristics;
 
     @OneToMany(mappedBy = "matrixDefinitionInstance", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<IssueCalculatedValue> issueCalculatedValues;
+
+    @OneToMany(mappedBy = "matrixDefinitionInstance", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @Where(clause = " END_TMS IS NULL ")
+    private Set<MatrixDefinitionInstancePriceStatus> mdsDefinitionInstancePriceStatus;
 
     public String getId()
     {
@@ -75,6 +84,17 @@ public class MatrixDefinitionInstance implements Serializable
     public void setIssueCalculatedValues(Set<IssueCalculatedValue> issueCalculatedValues)
     {
         this.issueCalculatedValues = issueCalculatedValues;
+    }
+
+    public Set<MatrixDefinitionInstancePriceStatus> getMdsDefinitionInstancePriceStatus()
+    {
+        return mdsDefinitionInstancePriceStatus;
+    }
+
+    public void setMdsDefinitionInstancePriceStatus(
+            Set<MatrixDefinitionInstancePriceStatus> mdsDefinitionInstancePriceStatus)
+    {
+        this.mdsDefinitionInstancePriceStatus = mdsDefinitionInstancePriceStatus;
     }
 
 }

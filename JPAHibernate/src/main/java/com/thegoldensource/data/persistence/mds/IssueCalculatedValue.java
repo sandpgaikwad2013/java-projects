@@ -13,6 +13,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Where;
+
 /**
  * @author sgaikwad
  *
@@ -20,6 +22,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "FT_T_ISCV")
+@Where(clause = " DATA_STAT_TYP IS NULL OR DATA_STAT_TYP='ACTIVE' ")
 public class IssueCalculatedValue implements Serializable
 {
 

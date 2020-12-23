@@ -10,8 +10,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Where;
+
 @Entity
 @Table(name = "FT_T_MTGD")
+@Where(clause = " END_TMS IS NULL ")
 public class MatrixGridDetails implements Serializable
 {
 

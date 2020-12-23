@@ -10,8 +10,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Where;
+
 @Entity
 @Table(name = "FT_T_ISPS")
+@Where(clause = " END_TMS IS NULL ")
 public class IssuePriceValidation implements Serializable
 {
 

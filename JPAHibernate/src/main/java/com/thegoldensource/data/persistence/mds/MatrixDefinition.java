@@ -10,8 +10,11 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Where;
+
 @Entity
 @Table(name = "FT_T_MTRX")
+@Where(clause = " END_TMS IS NULL ")
 public class MatrixDefinition implements Serializable
 {
     private static final long serialVersionUID = 1L;
@@ -21,6 +24,7 @@ public class MatrixDefinition implements Serializable
     private String id;
 
     @OneToMany(mappedBy = "matrixDefinition", fetch = FetchType.LAZY)
+    @Where(clause = " END_TMS IS NULL ")
     private Set<MatrixDefinitionInstance> matrixDefinitionInstances;
 
     public String getId()

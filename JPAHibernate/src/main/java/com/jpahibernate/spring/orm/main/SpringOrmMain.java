@@ -15,7 +15,7 @@ public class SpringOrmMain
 
         DerivationService derivationService = ctx.getBean(DerivationService.class);
 
-        derivationService.getMatrixDefinitionInstance();
+        derivationService.getIssue();
 
         ctx.close();
 

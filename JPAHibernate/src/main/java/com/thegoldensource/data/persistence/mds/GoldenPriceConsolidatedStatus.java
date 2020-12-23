@@ -14,8 +14,15 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Filter;
+import org.hibernate.annotations.FilterDef;
+import org.hibernate.annotations.ParamDef;
+import org.hibernate.annotations.Where;
+
 @Entity
 @Table(name = "FT_t_GPCS")
+@Where(clause = " END_TMS IS NULL ")
+@FilterDef(name = "mtdiFilter", parameters = @ParamDef(name = "mtdiOid", type = "string"))
 public class GoldenPriceConsolidatedStatus implements Serializable
 {
     private static final long serialVersionUID = 1L;
@@ -28,6 +35,8 @@ public class GoldenPriceConsolidatedStatus implements Serializable
     private Issue issue;
 
     @OneToMany(mappedBy = "goldenPrice", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @Where(clause = " END_TMS IS NULL ")
+    @Filter(name = "mtdiFilter", condition = "MTDI_OID = :mtdiOid")
     private Set<MatrixDefinitionInstancePriceStatus> goldenPriceCurveParticipents;
 
     @OneToOne(fetch = FetchType.LAZY)

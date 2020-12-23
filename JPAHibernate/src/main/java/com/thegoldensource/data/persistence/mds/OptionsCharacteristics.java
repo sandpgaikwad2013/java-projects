@@ -10,8 +10,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Where;
+
 @Entity
 @Table(name = "FT_T_OPCH")
+@Where(clause = " END_TMS IS NULL ")
 public class OptionsCharacteristics implements Serializable
 {
     private static final long serialVersionUID = 1L;

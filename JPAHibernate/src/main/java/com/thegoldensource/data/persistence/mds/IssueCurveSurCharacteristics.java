@@ -14,12 +14,15 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Where;
+
 /**
  * @author sgaikwad
  *
  */
 @Entity
 @Table(name = "FT_T_ICSC")
+@Where(clause = " END_TMS IS NULL ")
 public class IssueCurveSurCharacteristics implements Serializable
 {
 
